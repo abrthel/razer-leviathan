@@ -35,11 +35,10 @@ function Show-Balloon {
     }
 }
 
-[string] $TaskInterval = "PT29M"
+[string] $TaskInterval = "PT25M" # Interval of 25 minutes
 [string] $TaskName = "razer-leviathan"
-[string] $AudioFile = (Join-Path -Path $PSScriptRoot -ChildPath "play.wav")
 [string] $TaskCommand = (Join-Path -Path $PSScriptRoot -ChildPath "play.vbs")
-[string] $TaskDescription = "Verhindert das automatische abschalten der Razer Leviathan Soundbar. Ben$([char]0x00F6)tigt die Dateien $TaskCommand und $AudioFile."
+[string] $TaskDescription = "Prevents the automatic switch off the Razer Leviathan Soundbar"
 [string] $TaskFile = (Join-Path -Path $PSScriptRoot -ChildPath "$TaskName.xml")
 [string] $TaskTemplate = @'
 <?xml version="1.0" encoding="UTF-16"?>
@@ -101,9 +100,9 @@ if ($args.Length -gt 0) {
                 Start-Process -FilePath "schtasks" -ArgumentList $ArgumentList -WindowStyle Hidden
             }
         }
-        Show-Balloon -TipTitle "Razer Leviathan" -TipText "Razer Leviathan Event entfernt." -TipIcon Info
+        Show-Balloon -TipTitle "Razer Leviathan" -TipText "Razer Leviathan Event removed." -TipIcon Info
         $Result = [System.Windows.Forms.MessageBox]::Show(
-            "Razer Leviathan Event entfernt.", "Razer Leviathan", 0,
+            "Razer Leviathan Event removed.", "Razer Leviathan", 0,
             [System.Windows.Forms.MessageBoxIcon]::Information
         )
     }
@@ -135,9 +134,9 @@ if ($args.Length -gt 0) {
             Remove-Item -Path $TaskFile
         }
     }
-    Show-Balloon -TipTitle "Razer Leviathan" -TipText "Razer Leviathan Event installiert." -TipIcon Info
+    Show-Balloon -TipTitle "Razer Leviathan" -TipText "Razer Leviathan Event installed." -TipIcon Info
     $Result = [System.Windows.Forms.MessageBox]::Show(
-        "Razer Leviathan Event installiert.", "Razer Leviathan", 0,
+        "Razer Leviathan Event installed.", "Razer Leviathan", 0,
         [System.Windows.Forms.MessageBoxIcon]::Information
     )
 }
