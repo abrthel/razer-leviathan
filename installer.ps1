@@ -35,7 +35,7 @@ function Show-Balloon {
     }
 }
 
-[string] $TaskInterval = "PT18M" # Interval of 18 minutes
+[string] $TaskInterval = "PT15M" # Interval of 15 minutes
 [string] $TaskName = "razer-leviathan"
 [string] $TaskCommand = (Join-Path -Path $PSScriptRoot -ChildPath "play.vbs")
 [string] $TaskDescription = "Prevents the automatic switch off the Razer Leviathan Soundbar"
